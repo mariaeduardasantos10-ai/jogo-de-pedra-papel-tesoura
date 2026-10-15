@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo: Pedra, Papel e Tesoura 🌸</title>
+
+    <!-- Ligação direta com o ficheiro CSS dentro da pasta static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pedra, Papel e Tesoura</h1>
+        
+        <!-- Formulário que envia a jogada ao Python ao clicar no botão -->
+        <form action="/jogar" method="POST">
+            <p>Escolha a sua jogada:</p>
+            <div class="botoes">
+                <button type="submit" name="escolha" value="pedra">✊ Pedra</button>
+                <button type="submit" name="escolha" value="papel">✋ Papel</button>
+                <button type="submit" name="escolha" value="tesoura">✌️ Tesoura</button>
+            </div>
+        </form>
+
+        <!-- Exibe o resultado enviado pelo Python -->
+        {% if resultado %}
+        <div class="resultado-box">
+            <p><strong>Você escolheu:</strong> {{ jogador }}</p>
+            <p><strong>Computador escolheu:</strong> {{ computador }}</p>
+            <h2 class="resultado-texto">{{ resultado }}</h2>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
